@@ -1,0 +1,30 @@
+// 🏀 CRYPTO ARENA - SPORTS DESIGN SYSTEM DESIGN TOKENS
+
+// Palette
+$color-bg-deep: #060608;          // Cinematic deep stadium background
+$color-bg-graphite: #0f1015;      // Secondary background
+$color-bg-card: rgba(20, 22, 28, 0.7); // Premium dark glassmorphism card
+$color-bg-card-solid: #151821;    // Solid secondary cards
+$color-primary: #ff5500;          // Hot basketball orange accent
+$color-primary-hover: #ff7733;    // Hover state orange
+$color-primary-glow: rgba(255, 85, 0, 0.45);
+$color-primary-dim: rgba(255, 85, 0, 0.15);
+$color-text-white: #f8f9fa;       // Soft warm white text
+$color-text-muted: #8a8d9a;       // Slate gray description text
+$color-success: #00e676;          // Available green
+$color-danger: #ff1744;           // Booked red
+$color-warning: #ffea00;          // Alert warning yellow
+
+// Borders
+$color-border: rgba(255, 255, 255, 0.07);
+$color-border-glow: rgba(255, 85, 0, 0.25);
+
+// Typography
+$font-display: var(--font-outfit), 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-body: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Responsive Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

@@ -1,0 +1,888 @@
+@import './variables';
+@import './mixins';
+
+.heroSection {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 80px; // Clear Navbar
+  @include stadium-lighting;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  filter: saturate(1.2) contrast(1.1);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, $color-bg-deep 10%, rgba(6, 6, 8, 0.4) 60%, $color-bg-deep 100%);
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 85, 0, 0.1);
+  border: 1px solid rgba(255, 85, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 100px;
+  color: $color-primary;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-size: 72px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  @include respond-to(md) {
+    font-size: 42px;
+  }
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  color: $color-text-muted;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  @include respond-to(md) {
+    font-size: 16px;
+  }
+}
+
+.heroActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  @include respond-to(sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.btnPrimary {
+  background: $color-primary;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: $font-display;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include smooth-hover;
+  box-shadow: 0 4px 20px rgba(255, 85, 0, 0.3);
+  
+  &:hover {
+    background: $color-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px $color-primary-glow;
+  }
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: $font-display;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include smooth-hover;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+// Stats section
+.statsSection {
+  position: relative;
+  z-index: 5;
+  margin-top: -60px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  @include glass-container;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  @include smooth-hover;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    @include smooth-hover;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 85, 0, 0.3);
+    &::before {
+      background: $color-primary;
+    }
+  }
+}
+
+.statNumber {
+  font-size: 48px;
+  font-family: $font-display;
+  color: $color-primary;
+  margin-bottom: 8px;
+  font-weight: 800;
+  @include text-glow;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Courts Section
+.sectionHeader {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  
+  @include respond-to(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.sectionTitle {
+  font-size: 36px;
+  text-transform: uppercase;
+  @include respond-to(md) {
+    font-size: 28px;
+  }
+}
+
+.sectionSubtitle {
+  color: $color-text-muted;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.courtsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.courtCard {
+  background: $color-bg-card-solid;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  overflow: hidden;
+  @include smooth-hover;
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: $color-border-glow;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    
+    .courtImage img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.courtImage {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.courtBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-primary;
+  border: 1px solid rgba(255, 85, 0, 0.3);
+}
+
+.courtInfo {
+  padding: 24px;
+}
+
+.courtName {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.courtLocation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $color-text-muted;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.courtMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.courtPrice {
+  font-family: $font-display;
+  span {
+    font-size: 24px;
+    color: $color-primary;
+    font-weight: 700;
+  }
+  color: $color-text-muted;
+  font-size: 14px;
+}
+
+.btnReserve {
+  background: transparent;
+  color: $color-primary;
+  border: 1px solid rgba(255, 85, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  @include smooth-hover;
+  
+  &:hover {
+    background: $color-primary;
+    color: white;
+    box-shadow: 0 4px 15px $color-primary-glow;
+  }
+}
+
+// Venue section
+.venuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.venueCard {
+  @include glass-container;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  @include smooth-hover;
+  
+  &:hover {
+    border-color: $color-border-glow;
+    .venueImage img {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.venueImage {
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.venueInfo {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.venueName {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.venueDesc {
+  color: $color-text-muted;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.venueFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+}
+
+// Benefits section
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefitCard {
+  @include glass-container;
+  padding: 40px 32px;
+  @include smooth-hover;
+  
+  &:hover {
+    border-color: rgba(255, 85, 0, 0.3);
+    transform: translateY(-5px);
+    .benefitIcon {
+      background: $color-primary;
+      color: white;
+      box-shadow: 0 0 20px $color-primary-glow;
+    }
+  }
+}
+
+.benefitIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: rgba(255, 85, 0, 0.1);
+  border: 1px solid rgba(255, 85, 0, 0.2);
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  @include smooth-hover;
+  
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.benefitTitle {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.benefitDesc {
+  color: $color-text-muted;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+// 🎯 PASOS PARA RESERVAR
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, $color-primary, $color-primary, transparent);
+    z-index: 0;
+    
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+}
+
+.stepCard {
+  @include glass-container;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  @include smooth-hover;
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: $color-primary;
+    .stepIcon {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.stepNumber {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  background: $color-primary;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-family: $font-display;
+}
+
+.stepIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.stepTitle {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.stepDesc {
+  color: $color-text-muted;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.stepArrow {
+  position: absolute;
+  right: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-primary;
+  opacity: 0.6;
+  
+  @include respond-to(lg) {
+    display: none;
+  }
+}
+
+// ⭐ TESTIMONIOS
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonialCard {
+  @include glass-container;
+  padding: 32px;
+  @include smooth-hover;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $color-border-glow;
+  }
+}
+
+.testimonialHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.testimonialAvatar {
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonialMeta {
+  flex-grow: 1;
+}
+
+.testimonialName {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.testimonialRole {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.testimonialRating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.testimonialText {
+  color: $color-text-muted;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+// 🏀 GALERÍA
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.galleryItem {
+  position: relative;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  @include smooth-hover;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+    .galleryOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.galleryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 85, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+// 📞 CONTACTO
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactCard {
+  @include glass-container;
+  padding: 40px 32px;
+  text-align: center;
+  @include smooth-hover;
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: $color-primary;
+    .contactIcon {
+      color: $color-primary;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.contactIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  background: rgba(255, 85, 0, 0.1);
+  border: 1px solid rgba(255, 85, 0, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-muted;
+  transition: all 0.3s ease;
+}
+
+.contactTitle {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.contactSubtitle {
+  color: $color-text-muted;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.contactLink {
+  display: inline-block;
+  color: $color-primary;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  
+  &:hover {
+    border-bottom-color: $color-primary;
+  }
+}
+
+// 👥 COMUNIDAD
+.communityBanner {
+  @include glass-container;
+  @include border-glow;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 60px;
+  border-radius: 20px;
+  
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+}
+
+.communityContent {
+  z-index: 2;
+}
+
+.communityTitle {
+  font-size: 48px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  
+  @include respond-to(md) {
+    font-size: 32px;
+  }
+}
+
+.communityDesc {
+  color: $color-text-muted;
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.communityStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+  
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+  
+  div {
+    text-align: left;
+  }
+}
+
+.communityStat {
+  font-size: 32px;
+  color: $color-primary;
+  font-weight: 800;
+  font-family: $font-display;
+  margin-bottom: 8px;
+}
+
+.communityImage {
+  position: relative;
+  height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+  
+// 🏀 LEBRON JAMES BANNER
+.lebroBanner {
+  position: relative;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid $color-border-glow;
+  @include smooth-hover;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  @include respond-to(md) {
+    height: 350px;
+  }
+}
+
+.lebroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(20, 22, 28, 0.85) 0%, rgba(255, 85, 0, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 40px;
+  text-align: center;
+}
+
+.lebroContent {
+  max-width: 600px;
+}
+
+.lebroTitle {
+  font-size: 48px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  
+  @include respond-to(md) {
+    font-size: 32px;
+  }
+}
+
+.lebroDesc {
+  color: $color-text-muted;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  
+  @include respond-to(md) {
+    font-size: 14px;
+  }
+}
+
+// FOOTER CONTACT
+.footerContact {
+  background: $color-bg-card-solid;
+  border-top: 1px solid $color-border;
+  padding: 80px 0;
+  margin-top: 60px;
+  
+  .container {
+    max-width: 1200px;
+  }
+}
+
+.footerBottom {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: $color-text-muted;
+  font-size: 14px;
+  
+  p {
+    margin: 0;
+  }
+}

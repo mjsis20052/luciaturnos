@@ -1,0 +1,58 @@
+@import './variables';
+
+// Glassmorphism effect
+@mixin glass-container {
+  background: $color-bg-card;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $color-border;
+  border-radius: 16px;
+}
+
+// Glowing border effect
+@mixin border-glow {
+  border: 1px solid $color-border-glow;
+  box-shadow: 0 0 15px $color-primary-dim;
+}
+
+// Orange neon text glow
+@mixin text-glow {
+  text-shadow: 0 0 8px $color-primary-glow;
+}
+
+// Stadium spot light gradient
+@mixin stadium-lighting {
+  background: radial-gradient(circle at 50% -20%, rgba(255, 85, 0, 0.15) 0%, $color-bg-deep 70%);
+}
+
+// Subtitle gradient text
+@mixin gradient-text {
+  background: linear-gradient(135deg, $color-text-white 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Orange gradient text
+@mixin gradient-text-orange {
+  background: linear-gradient(135deg, #ff7733 0%, #ff3300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Interactive Hover transition
+@mixin smooth-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Responsive Media Query helpers
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: $breakpoint-xl) { @content; }
+  }
+}

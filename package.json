@@ -1,0 +1,49 @@
+{
+  "name": "crypto-arena",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "next dev",
+    "dev:backend": "nodemon --watch server --ext ts --exec ts-node --project tsconfig.server.json server/server.ts",
+    "build": "prisma generate && next build && tsc --project tsconfig.server.json",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend": "next start",
+    "start:backend": "node dist/server/server.js",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "ts-node --project tsconfig.server.json prisma/seed.ts",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "@tanstack/react-query": "^5.40.0",
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "framer-motion": "^11.2.10",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.395.0",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.77.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "nodemon": "^3.1.2",
+    "prisma": "^5.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,133 @@
+@import './variables';
+@import './mixins';
+
+.authContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+  @include stadium-lighting;
+}
+
+.authPanel {
+  @include glass-container;
+  @include border-glow;
+  max-width: 440px;
+  width: 100%;
+  padding: 48px;
+  position: relative;
+  z-index: 5;
+  
+  @include respond-to(sm) {
+    padding: 32px 24px;
+  }
+}
+
+.authHeader {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.authTitle {
+  font-size: 32px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.authSubtitle {
+  color: $color-text-muted;
+  font-size: 14px;
+}
+
+.errorMessage {
+  background: rgba(255, 23, 68, 0.1);
+  border: 1px solid rgba(255, 23, 68, 0.2);
+  color: $color-danger;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+  
+  label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  
+  input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 14px;
+    @include smooth-hover;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 10px $color-primary-dim;
+    }
+  }
+}
+
+.btnSubmit {
+  width: 100%;
+  background: $color-primary;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: $font-display;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include smooth-hover;
+  box-shadow: 0 4px 20px rgba(255, 85, 0, 0.3);
+  margin-top: 12px;
+  
+  &:hover:not(:disabled) {
+    background: $color-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px $color-primary-glow;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.authFooter {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: $color-text-muted;
+  
+  a {
+    color: $color-primary;
+    font-weight: 600;
+    margin-left: 4px;
+    @include smooth-hover;
+    
+    &:hover {
+      @include text-glow;
+      color: $color-primary-hover;
+    }
+  }
+}
