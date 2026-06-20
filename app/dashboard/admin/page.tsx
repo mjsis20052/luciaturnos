@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Calendar, Clock, DollarSign, Users, LayoutGrid, Plus, Trash, Check, X, MapPin } from 'lucide-react';
 import { useAuth } from '../../../components/Providers';
