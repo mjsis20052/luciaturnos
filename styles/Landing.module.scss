@@ -130,6 +130,8 @@
   position: relative;
   z-index: 5;
   margin-top: -60px;
+  margin-bottom: 60px;
+  padding-bottom: 40px;
 }
 
 .statsGrid {
@@ -192,6 +194,7 @@
 // Courts Section
 .sectionHeader {
   margin-bottom: 48px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
